@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const connectDB = require("./config/db");
+const authJwt = require("./helpers/jwt");
+const errorHandler = require("./helpers/errorHandler");
 require("dotenv/config");
 
 // Middleware
@@ -11,6 +13,9 @@ app.use(cors());
 app.options("*", cors());
 app.use(bodyParser.json());
 app.use(morgan("dev"));
+app.use(authJwt())
+app.use(errorHandler);
+
 
 //Routes
 const categoriesRoutes = require("./routers/categories");

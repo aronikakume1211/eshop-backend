@@ -133,6 +133,7 @@ router.get("/get/count", async (_req, res) => {
     res.status(500).json({ success: false, error: err });
   }
 });
+
 //Get Featured product and limit
 router.get("/get/featured/:count?", async (req, res) => {
   try {
